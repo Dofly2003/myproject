@@ -1,0 +1,26 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Kategori;
+use App\Models\User;
+use App\Models\Post;
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
+
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Seed the application's database.~
+     */
+    public function run(): void
+    {
+  
+
+        $this->call(KategoriSeeder::class);
+        Post::factory(57)->recycle([
+            Kategori::all(),
+            User::factory(7)->create()
+        ])->create();
+    }
+}
